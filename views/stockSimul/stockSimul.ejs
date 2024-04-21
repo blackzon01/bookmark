@@ -62,6 +62,10 @@
                 <th>입력</th>
             </tr><br>
             <tr>
+                <td>제목</td>
+                <td><input type="text" id="title" name="title" style="text-align: right;"></td>
+            </tr>    
+            <tr>
                 <td>전체 투자 금액</td>
                 <td><input type="text" id="totAmt" name="totAmt" style="text-align: right;" onkeypress="return allowOnlyNumbers(event);" onkeyup="this.value = formatNumber(this);"> 원</td>
             </tr>    
@@ -81,6 +85,10 @@
                 <td>손절율</td>
                 <td><input type="text" id="lossRate" name="lossRate" style="text-align: right;" onkeypress="return allowOnlyNumbers(event);" placeholder="20"> %</td>
             </tr>
+            <tr>
+                <td>메모</td>
+                <td><input type="text" id="memo" name="memo" style="text-align: right;"></td>
+            </tr>    
         </table>
     </div>
 </body>
