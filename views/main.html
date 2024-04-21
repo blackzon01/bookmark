@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <title>Data Scraping</title>
+</head>
+
+<body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var header = document.getElementById("myHeader");
+            header.addEventListener("click", function () {
+                // Change the URL to the desired webpage
+                window.location.href = "/main";
+            });
+        });
+    </script>
+    <script>
+        // HTML의 <script> 요소를 생성한다
+        const se = document.createElement('script');
+        // <script> 요소의 src 속성을 설정한다
+        se.src = 'https://ipinfo.io?callback=callback';
+        // <body> 요소의 하위 끝에 붙인다
+        // 그리고 콜백 함수를 호출한다
+        document.body.appendChild(se);
+        // 앞서 생성한 <script> 요소를 제거한다
+        document.body.removeChild(se);
+    
+        // 콜백 함수가 호출된다
+        function callback(data) {
+        document.getElementById('client-ip').textContent = data.ip;
+        }
+    </script>
+    <script>
+        // 현재 URL을 확인하는 함수
+        function getCurrentPath() {
+            return window.location.href;
+        }
+
+        // 현재 URL을 출력
+        console.log("Current URL:", getCurrentPath());
+    </script>
+
+
+
+    <!-- header 영역 -->
+    <!-- 테스트 : http://127.0.0.1:5500/views/main.html -->
+    <header id=myHeader class="header_image">
+        <!-- <img src="" width="100%" height="500px"> -->
+        <p class="header_image_text">
+            My Website
+        </p>
+    </header>
+
+    <!-- navigation bar -->
+    <nav>
+        <ul class="menu">
+            <a href="https://chzzk.naver.com/7ce8032370ac5121dcabce7bad375ced" target="_blank">풍월량</a>
+            <a href="https://chzzk.naver.com/live/d313d208af312efb8dc7184d9564be3d" target="_blank">요룰레히</a>
+            <!-- <li>
+                <a href="#" target='_blank'>MENU 2</a>
+            </li>
+            <li>
+                <a href="#" target='_blank'>MENU 3</a>
+                <ul class="depth_1">
+                    <li><a href="#" target='_blank'>MENU 3_1</a></li>
+                    <li><a href="#" target='_blank'>MENU 3_2</a></li>
+                </ul>
+            </li> -->
+        </ul>
+    </nav>
+
+    <div>
+        <table>
+            <tr>
+                <td>로그인 여부</td>
+                <td>
+                    <input type="radio" name="loginYn" value="Y">Y
+                    <input type="radio" name="loginYn" value="N">N
+                </td>
+            </tr>
+            <tr>
+                <td>로그인 URL</td>
+                <td><input type="text" name="loginText"></td>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td>PW</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+        </table>
+        <input type="button" name="btn_insert" value="신규">
+        <input type="button" name="btn_update" value="수정">
+        <input type="button" name="btn_delete" value="삭제">
+        <input type="button" name="btn_save" value="저장">
+        <input type="button" name="btn_amt_scraping" value="낙찰금액 가져오기">
+
+        <br>
+        <br>
+        <table class="table_graph">
+            <tr>
+                <th>No</th>
+                <th>URL</th>
+                <th>Amt</th>
+            </tr>
+            <tr>
+                <td>No</td>
+                <td>URL</td>
+                <td>Amt</td>
+            </tr>
+        </table>
+
+    </div>
+    <div>이 컴퓨터의 IP 주소: <span id="client-ip"></span></div>
+
+</body>
+
+</html>

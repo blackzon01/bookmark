@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../header', { title: 'Data Simulation' }) %>
+<%- include('../tabMenu') %>
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+
+    <style>
+        /* 표의 선 스타일 지정 */
+        table {
+            border-collapse: collapse; /* 셀 사이의 간격 제거 */
+        }
+        th, td {
+            border: 1px solid black; /* 셀의 테두리 설정 */
+            padding: 8px; /* 셀 안의 내용과 테두리 사이의 간격 설정 */
+        }
+    </style>
+
+    <script>
+        // 입력란에 숫자를 입력할 때마다 호출되는 함수
+        function formatNumber(input) {
+            // 입력된 문자열에서 모든 숫자와 '.'을 제외한 문자를 제거
+            var number = input.value.replace(/\D/g, '');
+            
+            // 입력된 숫자가 없을 경우 빈 문자열 반환
+            if (!number) {
+                return '';
+            }
+            
+            // 입력된 숫자를 세 자리마다 쉼표(,)를 추가하여 반환
+            return Number(number).toLocaleString('en');
+        }
+
+        // 숫자만 입력되도록 하는 함수
+        function allowOnlyNumbers(event) {
+            // 입력된 키 코드 확인
+            var keyCode = event.keyCode;
+            
+            // 숫자 키(0~9) 또는 백스페이스(8) 키인 경우에는 허용
+            if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105) || keyCode === 8) {
+                return true;
+            } else {
+                // 숫자가 아닌 키인 경우에는 알림 표시 후 입력 방지
+                alert("Please enter numbers only.");
+                return false;
+            }
+        }        
+    </script>    
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr>
+                <th>항목</th>
+                <th>입력</th>
+            </tr><br>
+            <tr>
+                <td>전체 투자 금액</td>
+                <td><input type="text" id="totAmt" name="totAmt" style="text-align: right;" onkeypress="return allowOnlyNumbers(event);" onkeyup="this.value = formatNumber(this);"> 원</td>
+            </tr>    
+            <tr>
+                <td>1일 매수할 종목 수</td>
+                <td><input type="text" id="dayBuyCnt" name="dayBuyCnt" style="text-align: right;" onkeypress="return allowOnlyNumbers(event);" onkeyup="this.value = formatNumber(this);"> 개</td>
+            </tr>
+            <tr>
+                <td>종목별 최대 매수 금액</td>
+                <td><input type="text" id="buyMaxAmt" name="buyMaxAmt" style="text-align: right;" onkeypress="return allowOnlyNumbers(event);" onkeyup="this.value = formatNumber(this);"> 원</td>
+            </tr>
+            <tr>
+                <td>익절율</td>
+                <td><input type="text" id="profitRate" name="profitRate" style="text-align: right;" onkeypress="return allowOnlyNumbers(event);" placeholder="20"> %</td>
+            </tr>
+            <tr>
+                <td>손절율</td>
+                <td><input type="text" id="lossRate" name="lossRate" style="text-align: right;" onkeypress="return allowOnlyNumbers(event);" placeholder="20"> %</td>
+            </tr>
+        </table>
+    </div>
+</body>

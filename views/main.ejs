@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('header', { title: 'Data Scraping' }) %>
+<%- include('tabMenu') %>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <title>Data Scraping</title>
+</head>
+
+<body>
+    <script>
+        // HTML의 <script> 요소를 생성한다
+        const se = document.createElement('script');
+        // <script> 요소의 src 속성을 설정한다
+        se.src = 'https://ipinfo.io?callback=callback';
+        // <body> 요소의 하위 끝에 붙인다
+        // 그리고 콜백 함수를 호출한다
+        document.body.appendChild(se);
+        // 앞서 생성한 <script> 요소를 제거한다
+        document.body.removeChild(se);
+    
+        // 콜백 함수가 호출된다
+        function callback(data) {
+        document.getElementById('client-ip').textContent = data.ip;
+        }
+    </script>
+    <script>
+        // 현재 URL을 확인하는 함수
+        function getCurrentPath() {
+            return window.location.href;
+        }
+
+        // 현재 URL을 출력
+        console.log("Current URL:", getCurrentPath());
+    </script>
+
+
+
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <tr>
+                    <td>로그인 여부</td>
+                    <td>
+                        <input type="radio" name="loginYn" value="Y">Y
+                        <input type="radio" name="loginYn" value="N">N
+                    </td>
+                </tr>
+                <tr>
+                    <td>로그인 URL</td>
+                    <td><input type="text" name="loginText"></td>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td><input type="text" name="id"></td>
+                </tr>
+                <tr>
+                    <td>PW</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="button-container">
+            <input type="button" class="custom-btn btn-14" style="margin-right: 10px;" name="btn_insert" value="신규">
+            <input type="button" class="custom-btn btn-14" style="margin-right: 10px;" name="btn_update" value="수정">
+            <input type="button" class="custom-btn btn-14" style="margin-right: 10px;" name="btn_delete" value="삭제">
+            <input type="button" class="custom-btn btn-14" style="margin-right: 10px;" name="btn_save" value="저장">
+            <!-- <input type="button" class="custom-btn btn-14" name="btn_amt_scraping" value="낙찰금액 가져오기"> -->
+        </div>    
+        <div class="table-container">
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <th>No</th>
+                    <th>사건번호</th>
+                    <th>주소</th>
+                    <th>(구)주소</th>
+                    <th>물건종류</th>
+                    <th>감정가</th>
+                    <th>최저가</th>
+                    <th>현재상태</th>
+                    <th>매각기일</th>
+                    <th>낙찰여부</th>
+                    <th>낙찰금액</th>
+                    <th>비고</th>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2020 타경 2574</td>
+                    <td>경기도 성남시 중원구 둔촌대로 363, 114동 12층1202호 (하대원동,성남자이)</td>
+                    <td>경기도 성남시 중원구 하대원동 539</td>
+                    <td>아파트</td>
+                    <td>379,000,000</td>
+                    <td>379,000,000</td>
+                    <td>재진행</td>
+                    <td>2024-04-08</td>
+                    <td>N</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2020 타경 2574</td>
+                    <td>경기도 성남시 중원구 둔촌대로 363, 114동 12층1202호 (하대원동,성남자이)</td>
+                    <td>경기도 성남시 중원구 하대원동 539</td>
+                    <td>아파트</td>
+                    <td>379,000,000</td>
+                    <td>379,000,000</td>
+                    <td>재진행</td>
+                    <td>2024-04-03</td>
+                    <td>Y</td>
+                    <td>379,000,000</td>
+                    <td>그대로 낙찰?</td>
+                </tr>
+            </table>
+    
+        </div>
+        <div>이 컴퓨터의 IP 주소: <span id="client-ip"></span></div>
+    
+    </div>
+
+
+</body>
+
+</html>

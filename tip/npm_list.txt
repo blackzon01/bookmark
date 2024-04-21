@@ -1,0 +1,6 @@
+npm install express --save
+npm install -g nodemon
+// nodemon index.js
+// nodemon --ext css,ejs,js,mjs,cjs,json index.js
+npm install ejs
+
