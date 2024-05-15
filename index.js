@@ -41,14 +41,19 @@ app.get('/main', function(req, res) {
 //               );
 // });
 
+app.get('/stockList', function(req, res) {
+    res.render(__dirname + '/views/stock/stockList.ejs');
+});
+
 app.get('/stockSimul', function(req, res) {
-    res.render(__dirname + '/views/stockSimul/stockSimul.ejs');
+    res.render(__dirname + '/views/stock/stockSimul.ejs');
 });
 
 // 서버 실행
 app.listen(config.port, () => {
   console.log(`Listen : ` + config.port);
-  console.log(__dirname);
+//   console.log(__dirname);
   console.log(config.name);
+  console.log(`TEST URL : localhost:` + config.port);
 });
 

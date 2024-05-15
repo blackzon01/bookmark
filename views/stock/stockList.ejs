@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../header', { title: 'Stock List' }) %>
+<%- include('../tabMenu') %>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/stockList.css">
+</head>
+
+<body>
+    <div>
+        <table>
+            <td class="table-search">일자 :</td>
+            <td class="table-search"><input type="text" id="searchData" name="searchData" style="text-align: right;"></td>
+            <td class="table-search"><input type="submit" id="searchStock" name="searchStock" value="검색"></td>
+        </table>
+    </div>
+    <div>
+        총 1 건
+        &nbsp&nbsp
+        일자 : 2024.01.01
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>결과</th>
+                <th>종목코드</th>
+                <th>종목</th>
+                <th>5일확률</th>
+                <th>5일확률(1년)</th>
+                <th>5일평균</th>
+                <th>5일평균(1년)</th>
+                <th>홍</th>
+                <th>윤</th>
+                <th>양/음</th>
+                <th>%</th>
+                <th>1일후</th>
+                <th>2일후</th>
+                <th>3일후</th>
+                <th>4일후</th>
+                <th>5일후</th>
+            </tr>
+            <tr>
+                <td>1일후</td>
+                <td>1111111</td>
+                <td>큐리옥스바이오시스템즈</td>
+                <td>0.67(59/88)</td>
+                <td>0.58(7/12)</td>
+                <td>대상없음</td>
+                <td>대상없음</td>
+                <td>XX</td>
+                <td>XX</td>
+                <td>음</td>
+                <td>-11.41</td>
+                <td>-11.41</td>
+                <td>-11.41</td>
+                <td>-11.41</td>
+                <td>-11.41</td>
+                <td>-11.41</td>
+            </tr>
+        </table>
+    </div>
+</body>
